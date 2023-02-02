@@ -70,10 +70,10 @@ workflows:
           name: publish_s3
           path: bin/codacy-staticcheck
           files: artifacts/codacy-staticcheck
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
           context: CodacyAWS
           requires:
             - plugins_test
