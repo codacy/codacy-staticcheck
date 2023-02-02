@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@7.0.0
+  codacy: codacy/base@10.1.0
   codacy_plugins_test: codacy/plugins-test@1.1.1
 
 workflows:
@@ -31,6 +31,7 @@ workflows:
             mkdir -p ~/workdir/artifacts/
             mv target/scala-2.13/codacy-staticcheck-assembly-$(cat .version).jar ~/workdir/artifacts/codacy-staticcheck-$(cat .version).jar
             mv target/native-image/codacy-staticcheck ~/workdir/artifacts/codacy-staticcheck-$(cat .version)
+            cp ~/workdir/artifacts/codacy-staticcheck-$(cat .version) ~/workdir/artifacts/codacy-staticcheck
           requires:
             - check_fmt_and_compile
       - codacy/shell:
@@ -63,5 +64,16 @@ workflows:
               only:
                 - master
           context: CodacyGitHub
+          requires:
+            - plugins_test
+      - codacy/publish_s3:
+          name: publish_s3
+          path: bin/codacy-staticcheck
+          files: artifacts/codacy-staticcheck
+          filters:
+            branches:
+              only:
+                - master
+          context: CodacyAWS
           requires:
             - plugins_test
