@@ -1,6 +1,6 @@
 {
   "name": "staticcheck",
-  "version": "2023.1.5",
+  "version": "2023.1.6",
   "patterns": [
     {
       "patternId": "SA1000",
