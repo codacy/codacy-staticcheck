@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.20
 
 COPY docs /docs
 COPY entry.sh /
