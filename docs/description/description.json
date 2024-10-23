@@ -496,8 +496,8 @@
   },
   {
     "patternId": "S1009",
-    "title": "Omit redundant nil check on slices",
-    "description": "Omit redundant nil check on slices"
+    "title": "Omit redundant nil check on slices, maps, and channels",
+    "description": "Omit redundant nil check on slices, maps, and channels"
   },
   {
     "patternId": "S1010",

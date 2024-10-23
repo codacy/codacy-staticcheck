@@ -106,7 +106,7 @@ curl -XPOST -L -H "project-token: $PROJECT_TOKEN" \
 
 ##### Update Documentation
 
-Check if any new rules need to be added to the DocGenerator.
+Check if any new rules need to be added to the DocGenerator. Make sure you have staticcheck installed on your local machine.
 `sbt doc-generator/run`
 
 ## What is Codacy?
