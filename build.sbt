@@ -5,7 +5,7 @@ import scala.util.parsing.json.JSON
 
 name := "codacy-staticcheck"
 
-ThisBuild / scalaVersion := "2.13.3"
+ThisBuild / scalaVersion := "3.6.4"
 
 libraryDependencies ++= Seq(
   "com.codacy" %% "codacy-engine-scala-seed" % "6.1.3",
