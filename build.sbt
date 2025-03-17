@@ -7,6 +7,8 @@ name := "codacy-staticcheck"
 
 ThisBuild / scalaVersion := "2.13.16"
 
+enablePlugins(NativeImagePlugin)
+
 libraryDependencies ++= Seq(
   "com.codacy" %% "codacy-engine-scala-seed" % "6.1.3",
   "org.scala-lang.modules" %% "scala-xml" % "2.3.0",
@@ -19,7 +21,9 @@ val staticcheckVersion = "2025.1.1"
 dependsOn(shared)
 
 lazy val shared = project
-  .settings(libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "2.2.0")
+  .settings(
+    libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "2.2.0"
+  )
 
 lazy val `doc-generator` = project
   .settings(
@@ -34,12 +38,17 @@ lazy val `doc-generator` = project
     }.taskValue,
     libraryDependencies ++= Seq(
       "com.github.pathikrit" %% "better-files" % "3.9.2",
-      "com.lihaoyi" %% "ujson" % "4.1.0",
+      "com.lihaoyi" %% "ujson" % "4.1.0"
     )
   )
   .dependsOn(shared)
 
-enablePlugins(NativeImagePlugin)
+assembly / assemblyMergeStrategy := {
+  case PathList("module-info.class") => MergeStrategy.discard
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case PathList("reference.conf") => MergeStrategy.concat
+  case _ => MergeStrategy.first
+}
 
 nativeImageOptions ++= Seq(
   "-O1",
