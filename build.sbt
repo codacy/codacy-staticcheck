@@ -8,18 +8,18 @@ name := "codacy-staticcheck"
 ThisBuild / scalaVersion := "2.13.3"
 
 libraryDependencies ++= Seq(
-  "com.codacy" %% "codacy-engine-scala-seed" % "4.0.0",
-  "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
-  "com.lihaoyi" %% "ujson" % "1.2.2",
-  "org.scalatest" %% "scalatest" % "3.2.0" % Test
+  "com.codacy" %% "codacy-engine-scala-seed" % "6.1.3",
+  "org.scala-lang.modules" %% "scala-xml" % "2.3.0",
+  "com.lihaoyi" %% "ujson" % "4.1.0",
+  "org.scalatest" %% "scalatest" % "3.2.19" % Test
 )
 
-val staticcheckVersion = "2024.1.1"
+val staticcheckVersion = "2025.1.1"
 
 dependsOn(shared)
 
 lazy val shared = project
-  .settings(libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "2.2.0")
+  .settings(libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "7.9.15")
 
 lazy val `doc-generator` = project
   .settings(
@@ -33,8 +33,8 @@ lazy val `doc-generator` = project
       Seq(file)
     }.taskValue,
     libraryDependencies ++= Seq(
-      "com.github.pathikrit" %% "better-files" % "3.9.1",
-      "com.lihaoyi" %% "ujson" % "1.2.2",
+      "com.github.pathikrit" %% "better-files" % "3.9.2",
+      "com.lihaoyi" %% "ujson" % "4.1.0",
     )
   )
   .dependsOn(shared)
