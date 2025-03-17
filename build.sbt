@@ -21,9 +21,7 @@ val staticcheckVersion = "2025.1.1"
 dependsOn(shared)
 
 lazy val shared = project
-  .settings(
-    libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "2.2.0"
-  )
+  .settings(libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "2.2.0")
 
 lazy val `doc-generator` = project
   .settings(
@@ -36,10 +34,7 @@ lazy val `doc-generator` = project
                         |""".stripMargin)
       Seq(file)
     }.taskValue,
-    libraryDependencies ++= Seq(
-      "com.github.pathikrit" %% "better-files" % "3.9.2",
-      "com.lihaoyi" %% "ujson" % "4.1.0"
-    )
+    libraryDependencies ++= Seq("com.github.pathikrit" %% "better-files" % "3.9.2", "com.lihaoyi" %% "ujson" % "4.1.0")
   )
   .dependsOn(shared)
 
