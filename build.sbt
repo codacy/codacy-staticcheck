@@ -5,7 +5,7 @@ import scala.util.parsing.json.JSON
 
 name := "codacy-staticcheck"
 
-ThisBuild / scalaVersion := "3.6.4"
+ThisBuild / scalaVersion := "2.13.16"
 
 libraryDependencies ++= Seq(
   "com.codacy" %% "codacy-engine-scala-seed" % "6.1.3",
@@ -19,7 +19,7 @@ val staticcheckVersion = "2025.1.1"
 dependsOn(shared)
 
 lazy val shared = project
-  .settings(libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "7.9.15")
+  .settings(libraryDependencies += "com.codacy" %% "codacy-analysis-cli-model" % "2.2.0")
 
 lazy val `doc-generator` = project
   .settings(
