@@ -5,16 +5,18 @@ import scala.util.parsing.json.JSON
 
 name := "codacy-staticcheck"
 
-ThisBuild / scalaVersion := "2.13.3"
+ThisBuild / scalaVersion := "2.13.16"
+
+enablePlugins(NativeImagePlugin)
 
 libraryDependencies ++= Seq(
-  "com.codacy" %% "codacy-engine-scala-seed" % "4.0.0",
-  "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
-  "com.lihaoyi" %% "ujson" % "1.2.2",
-  "org.scalatest" %% "scalatest" % "3.2.0" % Test
+  "com.codacy" %% "codacy-engine-scala-seed" % "6.1.3",
+  "org.scala-lang.modules" %% "scala-xml" % "2.3.0",
+  "com.lihaoyi" %% "ujson" % "4.1.0",
+  "org.scalatest" %% "scalatest" % "3.2.19" % Test
 )
 
-val staticcheckVersion = "2024.1.1"
+val staticcheckVersion = "2025.1.1"
 
 dependsOn(shared)
 
@@ -32,14 +34,16 @@ lazy val `doc-generator` = project
                         |""".stripMargin)
       Seq(file)
     }.taskValue,
-    libraryDependencies ++= Seq(
-      "com.github.pathikrit" %% "better-files" % "3.9.1",
-      "com.lihaoyi" %% "ujson" % "1.2.2",
-    )
+    libraryDependencies ++= Seq("com.github.pathikrit" %% "better-files" % "3.9.2", "com.lihaoyi" %% "ujson" % "4.1.0")
   )
   .dependsOn(shared)
 
-enablePlugins(NativeImagePlugin)
+assembly / assemblyMergeStrategy := {
+  case PathList("module-info.class") => MergeStrategy.discard
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case PathList("reference.conf") => MergeStrategy.concat
+  case _ => MergeStrategy.first
+}
 
 nativeImageOptions ++= Seq(
   "-O1",
