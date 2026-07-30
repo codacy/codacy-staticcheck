@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.19" % Test
 )
 
-val staticcheckVersion = "2025.1.1"
+val staticcheckVersion = "2026.1"
 
 dependsOn(shared)
 
