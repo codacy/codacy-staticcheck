@@ -1,6 +1,6 @@
 {
   "name": "staticcheck",
-  "version": "2026.1",
+  "version": "2026.2.1",
   "patterns": [
     {
       "patternId": "SA1000",
@@ -378,11 +378,6 @@
       "category": "CodeStyle"
     },
     {
-      "patternId": "SA5011",
-      "level": "Warning",
-      "category": "CodeStyle"
-    },
-    {
       "patternId": "SA5012",
       "level": "Warning",
       "category": "CodeStyle"
@@ -449,6 +444,11 @@
     },
     {
       "patternId": "SA9008",
+      "level": "Error",
+      "category": "CodeStyle"
+    },
+    {
+      "patternId": "SA9010",
       "level": "Error",
       "category": "CodeStyle"
     },
