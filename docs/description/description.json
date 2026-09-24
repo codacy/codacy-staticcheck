@@ -146,8 +146,8 @@
   },
   {
     "patternId": "SA2000",
-    "title": "sync.WaitGroup.Add called inside the goroutine, leading to a race condition",
-    "description": "sync.WaitGroup.Add called inside the goroutine, leading to a race condition"
+    "title": "(*sync.WaitGroup).Add called inside the goroutine, leading to a race condition",
+    "description": "(*sync.WaitGroup).Add called inside the goroutine, leading to a race condition"
   },
   {
     "patternId": "SA2001",
@@ -375,11 +375,6 @@
     "description": "Impossible type assertion"
   },
   {
-    "patternId": "SA5011",
-    "title": "Possible nil pointer dereference",
-    "description": "Possible nil pointer dereference"
-  },
-  {
     "patternId": "SA5012",
     "title": "Passing odd-sized slice to function expecting even size",
     "description": "Passing odd-sized slice to function expecting even size"
@@ -448,6 +443,11 @@
     "patternId": "SA9008",
     "title": "else branch of a type assertion is probably not reading the right value",
     "description": "else branch of a type assertion is probably not reading the right value"
+  },
+  {
+    "patternId": "SA9010",
+    "title": "Returned function should be called in defer",
+    "description": "Returned function should be called in defer"
   },
   {
     "patternId": "S1000",
